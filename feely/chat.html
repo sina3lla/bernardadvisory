@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#100f13" />
+    <!-- Replace this localhost URL with the deployed API URL in production. -->
+    <meta name="feely-api-base" content="http://127.0.0.1:8000/api/v1" />
+    <meta
+      name="description"
+      content="A private FeelY space for thoughtful conversations and personal reflection."
+    />
+    <title>FeelY Chat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=20260808-4" />
+  </head>
+  <body>
+    <main class="shell">
+      <section id="auth-view" class="auth-view">
+        <div class="auth-story">
+          <a class="brand-lockup brand-lockup-light" href="chat.html" aria-label="FeelY chat">
+            <span class="brand-symbol" aria-hidden="true">F</span>
+            <span>FeelY</span>
+          </a>
+          <div class="auth-story-copy">
+            <p class="eyebrow eyebrow-light">Your private reflection space</p>
+            <h1>Become your own creation.</h1>
+            <p>
+              Slow down, name what is happening, and find the next honest step through
+              conversation.
+            </p>
+          </div>
+          <p class="image-credit">A quieter place to hear yourself.</p>
+        </div>
+
+        <div class="auth-panel" aria-labelledby="auth-heading">
+          <div class="auth-panel-brand">
+            <a class="brand-lockup" href="chat.html" aria-label="FeelY chat">
+              <span class="brand-symbol" aria-hidden="true">F</span>
+              <span>FeelY</span>
+            </a>
+            <p>Mythic self-authorship, grounded in real conversation.</p>
+          </div>
+
+          <div class="auth-heading">
+            <p class="eyebrow">Welcome</p>
+            <h2 id="auth-heading">Return to your space</h2>
+          </div>
+
+          <div class="auth-tabs" role="tablist" aria-label="Account access">
+            <button id="login-tab" class="tab active" type="button" role="tab">Login</button>
+            <button id="register-tab" class="tab" type="button" role="tab">Register</button>
+          </div>
+
+          <form id="auth-form" class="auth-form">
+            <div id="google-auth-field" class="google-auth-field hidden">
+              <div id="google-button"></div>
+              <div class="auth-divider"><span>or</span></div>
+            </div>
+            <label>
+              <span>Email</span>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              />
+            </label>
+            <label id="username-field" class="hidden">
+              <span>Username</span>
+              <input
+                id="username"
+                name="username"
+                autocomplete="username"
+                minlength="3"
+                placeholder="How should FeelY call you?"
+              />
+            </label>
+            <label>
+              <span>Password</span>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                minlength="8"
+                placeholder="At least 8 characters"
+                required
+              />
+            </label>
+            <label class="bot-field" aria-hidden="true">
+              <span>Website</span>
+              <input
+                id="website"
+                name="website"
+                type="text"
+                autocomplete="off"
+                tabindex="-1"
+              />
+            </label>
+            <div id="captcha-field" class="captcha-field hidden">
+              <div id="captcha-widget"></div>
+              <p id="captcha-status" class="captcha-status" role="status"></p>
+            </div>
+            <button id="auth-submit" class="primary-button" type="submit">Login</button>
+            <p id="auth-error" class="form-error" role="alert"></p>
+          </form>
+
+          <p id="auth-status" class="auth-status" role="status"></p>
+          <p class="privacy-note">Your conversations remain connected to your private account.</p>
+        </div>
+      </section>
+
+      <section id="chat-view" class="chat-view hidden">
+        <button
+          id="sidebar-backdrop"
+          class="sidebar-backdrop hidden"
+          type="button"
+          aria-label="Close chat navigation"
+        ></button>
+
+        <aside id="sidebar" class="sidebar">
+          <div class="sidebar-brand-row">
+            <a class="brand-lockup brand-lockup-light" href="chat.html" aria-label="FeelY chat">
+              <span class="brand-symbol" aria-hidden="true">F</span>
+              <span>FeelY</span>
+            </a>
+            <button
+              id="sidebar-close"
+              class="icon-button sidebar-close"
+              type="button"
+              title="Close navigation"
+              aria-label="Close navigation"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <p class="sidebar-tagline">Become your own creation.</p>
+
+          <div class="workspace-switch" role="tablist" aria-label="Workspace view">
+            <button id="chat-workspace-button" class="active" type="button" role="tab">Chat</button>
+            <button id="map-workspace-button" type="button" role="tab">My Map</button>
+          </div>
+
+          <button id="new-chat-button" class="new-chat-button" type="button">
+            <span class="button-icon" aria-hidden="true">+</span>
+            <span>New conversation</span>
+          </button>
+
+          <div class="chat-list-heading">
+            <span>Conversations</span>
+            <span id="chat-count">0</span>
+          </div>
+          <nav id="chat-list" class="chat-list" aria-label="Chats"></nav>
+
+          <div class="sidebar-profile">
+            <span id="user-avatar" class="user-avatar" aria-hidden="true">Y</span>
+            <div class="user-copy">
+              <strong id="user-name">Your space</strong>
+              <span id="user-email">Private account</span>
+            </div>
+            <button
+              id="account-button"
+              class="icon-button"
+              type="button"
+              title="Account settings"
+              aria-label="Account settings"
+            >
+              <span aria-hidden="true">&#9881;</span>
+            </button>
+            <button
+              id="logout-button"
+              class="icon-button"
+              type="button"
+              title="Sign out"
+              aria-label="Sign out"
+            >
+              <span aria-hidden="true">&#8594;</span>
+            </button>
+          </div>
+        </aside>
+
+        <section id="conversation-view" class="conversation">
+          <header class="conversation-header">
+            <div class="conversation-heading">
+              <button
+                id="sidebar-toggle"
+                class="icon-button sidebar-toggle"
+                type="button"
+                title="Open conversations"
+                aria-label="Open conversations"
+              >
+                <span aria-hidden="true">&#9776;</span>
+              </button>
+              <div>
+                <p class="eyebrow">Current reflection</p>
+                <h2 id="chat-title">New conversation</h2>
+              </div>
+            </div>
+            <button
+              id="refresh-button"
+              class="icon-button"
+              type="button"
+              title="Refresh conversations"
+              aria-label="Refresh conversations"
+            >
+              <span aria-hidden="true">&#8635;</span>
+            </button>
+          </header>
+
+          <div id="messages" class="messages" aria-live="polite"></div>
+
+          <footer class="composer-zone">
+            <section id="map-suggestion-card" class="map-suggestion-card hidden" aria-live="polite">
+              <div class="suggestion-heading">
+                <div>
+                  <p class="eyebrow">Add to My Map?</p>
+                  <span id="map-suggestion-category" class="suggestion-category"></span>
+                </div>
+                <span id="map-suggestion-topic" class="suggestion-topic"></span>
+              </div>
+              <textarea id="map-suggestion-text" rows="2" aria-label="Edit map suggestion"></textarea>
+              <p id="map-suggestion-reason" class="suggestion-reason"></p>
+              <div class="suggestion-actions">
+                <button id="map-suggestion-dismiss" class="secondary-button" type="button">Not now</button>
+                <button id="map-suggestion-accept" class="primary-button small" type="button">Save to map</button>
+              </div>
+            </section>
+
+            <section id="topic-card" class="topic-card hidden" aria-live="polite">
+              <div class="topic-copy">
+                <span class="topic-mark" aria-hidden="true">&#10022;</span>
+                <div>
+                  <p class="eyebrow">A possible thread</p>
+                  <h3 id="topic-title"></h3>
+                  <p id="topic-description" class="hidden" aria-hidden="true"></p>
+                </div>
+              </div>
+              <div class="topic-actions">
+                <button id="topic-dismiss" class="secondary-button" type="button">Not this</button>
+                <button id="topic-accept" class="primary-button small" type="button">Save topic</button>
+              </div>
+            </section>
+
+            <section id="lens-panel" class="lens-panel hidden" aria-label="Reflection lenses">
+              <button type="button" data-lens="What actually happened, and what evidence do I have?">
+                <strong>Data</strong><span>What happened?</span>
+              </button>
+              <button type="button" data-lens="What do I notice in my body as I think about this?">
+                <strong>Body</strong><span>What do I sense?</span>
+              </button>
+              <button type="button" data-lens="If I trusted my own perception, what response becomes possible?">
+                <strong>Imagination</strong><span>What else is possible?</span>
+              </button>
+            </section>
+
+            <form id="message-form" class="message-form">
+              <textarea
+                id="message-input"
+                rows="1"
+                placeholder="Write what is on your mind..."
+                aria-label="Message FeelY"
+              ></textarea>
+              <button
+                id="send-button"
+                class="send-button"
+                type="submit"
+                title="Send message"
+                aria-label="Send message"
+              >
+                <span aria-hidden="true">&#8593;</span>
+              </button>
+            </form>
+            <div class="composer-meta">
+              <button id="lens-toggle" class="lens-toggle" type="button" aria-expanded="false">Three lenses</button>
+              <p class="composer-note">FeelY can help you reflect, but it is not emergency or medical care.</p>
+            </div>
+          </footer>
+        </section>
+
+        <section id="map-view" class="map-view hidden">
+          <header class="map-header">
+            <div class="conversation-heading">
+              <button
+                id="map-sidebar-toggle"
+                class="icon-button sidebar-toggle"
+                type="button"
+                title="Open conversations"
+                aria-label="Open conversations"
+              >
+                <span aria-hidden="true">&#9776;</span>
+              </button>
+              <div>
+                <p class="eyebrow">Self-authorship</p>
+                <h2>What you are learning and choosing - your map grows from topics and observations you choose to save.</h2>
+              </div>
+            </div>
+            <button id="add-topic-button" class="map-command" type="button">+ Add topic</button>
+          </header>
+          <div id="map-content" class="map-content"></div>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="practice-dialog" class="app-dialog">
+      <form id="practice-form" method="dialog">
+        <button class="dialog-close" type="button" data-close-dialog="practice-dialog" aria-label="Close">&times;</button>
+        <p class="eyebrow">A repeatable choice</p>
+        <h2>Add a practice</h2>
+        <label>
+          <span>What would you like to try?</span>
+          <textarea id="practice-text" rows="4" required></textarea>
+        </label>
+        <label>
+          <span>Connect it to a topic</span>
+          <select id="practice-topic"></select>
+        </label>
+        <button class="primary-button" type="submit">Save practice</button>
+      </form>
+    </dialog>
+
+    <dialog id="reflection-dialog" class="app-dialog">
+      <form id="reflection-form" method="dialog">
+        <button class="dialog-close" type="button" data-close-dialog="reflection-dialog" aria-label="Close">&times;</button>
+        <p class="eyebrow">Review without shame</p>
+        <h2>What happened when you tried it?</h2>
+        <label>
+          <span>Your reflection can include what helped, what got in the way, or what you would change.</span>
+          <textarea id="practice-reflection" rows="5"></textarea>
+        </label>
+        <button class="primary-button" type="submit">Mark complete</button>
+      </form>
+    </dialog>
+
+    <dialog id="account-dialog" class="app-dialog account-dialog">
+      <form id="account-form" method="dialog">
+        <button class="dialog-close" type="button" data-close-dialog="account-dialog" aria-label="Close">&times;</button>
+        <p class="eyebrow">Account</p>
+        <h2>Edit profile</h2>
+        <p id="account-status" class="form-error" role="status"></p>
+        <label>
+          <span>Display name</span>
+          <input id="account-display-name" type="text" maxlength="120" />
+        </label>
+        <label>
+          <span>Username</span>
+          <input id="account-username" type="text" minlength="3" maxlength="80" required />
+        </label>
+        <label>
+          <span>Email</span>
+          <input id="account-email" type="email" required />
+        </label>
+        <label>
+          <span>Avatar URL</span>
+          <input id="account-avatar-url" type="url" maxlength="500" />
+        </label>
+        <label>
+          <span>Bio</span>
+          <textarea id="account-bio" rows="4" maxlength="500"></textarea>
+        </label>
+        <div class="account-row">
+          <span id="account-email-status">Email status unknown</span>
+          <button id="request-verification-button" class="secondary-button" type="button">Verify email</button>
+        </div>
+        <button class="primary-button" type="submit">Save profile</button>
+      </form>
+      <form id="password-form" method="dialog">
+        <p class="eyebrow">Password</p>
+        <label id="current-password-field">
+          <span>Current password</span>
+          <input id="account-current-password" type="password" autocomplete="current-password" />
+        </label>
+        <label>
+          <span>New password</span>
+          <input id="account-new-password" type="password" minlength="8" autocomplete="new-password" />
+        </label>
+        <button class="secondary-button" type="submit">Update password</button>
+      </form>
+      <section class="account-danger">
+        <p class="eyebrow">Danger zone</p>
+        <button id="delete-account-button" class="secondary-button danger" type="button">Delete account</button>
+      </section>
+    </dialog>
+
+    <script src="app.js?v=20260808-4"></script>
+  </body>
+</html>

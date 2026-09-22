@@ -1,0 +1,45 @@
+.chat-host-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-host-page .site-header {
+  flex: 0 0 auto;
+}
+
+.chat-frame-main {
+  width: 100%;
+  max-width: none;
+  flex: 1 1 auto;
+  display: block;
+  overflow: visible;
+  padding: 16px clamp(16px, 4vw, 56px) 24px;
+}
+
+.chat-frame {
+  display: block;
+  width: 100%;
+  min-height: 560px;
+  border: 1px solid rgba(23, 19, 15, 0.12);
+  border-radius: 16px;
+  background: #100f13;
+  box-shadow: 0 24px 70px rgba(23, 19, 15, 0.16);
+}
+
+.chat-frame-error {
+  margin: 16px 0;
+  color: var(--ink);
+}
+
+@media (max-width: 640px) {
+  .chat-frame-main {
+    padding: 10px 10px 16px;
+  }
+
+  .chat-frame {
+    min-height: 640px;
+    border-radius: 12px;
+  }
+}

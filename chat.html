@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="FeelY - ein privater Raum fuer Reflexion und persoenliche Klarheit." />
+  <meta name="feely-api-base" content="https://api.feel-y.com/api/v1" />
+  <title>FeelY Chat | Selina J. Bernard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="personal_styles.css?v=8" />
+  <link rel="stylesheet" href="chat_host.css?v=1" />
+</head>
+<body class="chat-host-page">
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Host header: this block can be replaced without changing the FeelY app. -->
+  <header class="site-header">
+    <a class="brand" href="personal.html" aria-label="Selina J. Bernard Home">
+      <img class="brand-logo" src="assets/bernard-advisory-logo.png" alt="Bernard Advisory" />
+    </a>
+    <nav class="domain-nav" aria-label="Beratungsbereiche">
+      <a href="personal.html">Personal</a>
+      <a href="professional.html">Professional</a>
+      <a class="active" href="chat.html" aria-current="page">Chat</a>
+    </nav>
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a href="personal.html#work" data-i18n="navWork">Angebot</a>
+      <a href="personal.html#recommendations" data-i18n="navRecommendations">Empfehlungen</a>
+      <a href="personal.html#contact" data-i18n="navContact">Kontakt</a>
+    </nav>
+    <a class="button header-button" href="mailto:advisory@selinabernard.com" data-i18n="headerCta">Gespraech anfragen</a>
+    <nav class="lang-switch" aria-label="Language selection">
+      <button class="active" type="button" data-lang="de">DE</button>
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="fr">FR</button>
+    </nav>
+  </header>
+
+  <main class="chat-frame-main">
+    <iframe
+      id="feely-chat-frame"
+      class="chat-frame"
+      data-src="feely/chat.html"
+      title="FeelY private chat"
+    ></iframe>
+    <noscript>
+      <p class="chat-frame-error">JavaScript is required to open FeelY Chat.</p>
+    </noscript>
+  </main>
+
+  <script src="chat_host.js?v=2"></script>
+</body>
+</html>

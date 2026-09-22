@@ -456,6 +456,18 @@ footer {
   font-size: .9rem;
 }
 
+.footer-branding {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#impressum {
+  color: var(--muted);
+  font-size: .86rem;
+}
+
+
 .reveal {
   opacity: 0;
   transform: translateY(36px);
@@ -532,4 +544,36 @@ footer {
     transition-duration: .01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+}
+
+.contact-actions {
+  margin-left: auto;
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.phone-link {
+  text-decoration: none;
+  color: #8f4540;
+  font-weight: 700;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.phone-number {
+  display: block;
+  letter-spacing: 0.04em;
+}
+
+.phone-note {
+  display: block;
+  margin-top: 0.15rem;
+  color: #2f3442;
+  font-size: 0.72rem;
+  font-weight: 600;
+  opacity: 0.7;
 }

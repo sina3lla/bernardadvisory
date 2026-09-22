@@ -1,0 +1,19 @@
+DirectoryIndex public/index.php
+Options -Indexes
+
+<IfModule mod_authz_core.c>
+  <FilesMatch "^(\.env.*|\.git.*|README\.md)$">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteRule ^(app|data|\.git)(/|$) - [F,L]
+  RewriteRule ^(\.env.*|README\.md|\.git.*)$ - [F,L]
+  RewriteRule ^$ public/index.php [QSA,L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ public/index.php [QSA,L]
+</IfModule>

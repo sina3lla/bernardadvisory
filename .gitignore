@@ -1,0 +1,6 @@
+.env
+.env.*
+.DS_Store
+*.log
+instagram-bot/data/*
+!instagram-bot/data/.htaccess
