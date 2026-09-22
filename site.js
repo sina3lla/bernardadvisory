@@ -7,7 +7,8 @@ menu?.addEventListener('click', () => {
   nav.classList.toggle('open', open);
 });
 document.addEventListener('keydown', e => { if(e.key === 'Escape' && nav?.classList.contains('open')) {nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Open navigation');menu.focus();} });
-document.querySelector('#year').textContent = new Date().getFullYear();
+const year = document.querySelector('#year');
+if (year) year.textContent = new Date().getFullYear();
 const notice = document.querySelector('#notice');
 const notices = {
   book: ['The next chapter is coming.', 'These are provisional titles and concept covers. The final Kindle listings and purchase links will be added when the series is ready.'],
@@ -19,8 +20,8 @@ document.querySelectorAll('[data-notice]').forEach(button => button.addEventList
   document.querySelector('#notice-text').textContent = description;
   notice.showModal();
 }));
-notice.querySelector('.close').addEventListener('click', () => notice.close());
-notice.addEventListener('click', e => { if(e.target === notice) {const r=notice.getBoundingClientRect(); if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) notice.close();} });
+notice?.querySelector('.close')?.addEventListener('click', () => notice.close());
+notice?.addEventListener('click', e => { if(e.target === notice) {const r=notice.getBoundingClientRect(); if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) notice.close();} });
 const examples = {
   boundaries: ['I keep saying yes when I mean no.', 'What are you afraid might change if you said what you meant?', 'Consider one recent example. What did you want to say, and what did you feel responsible for protecting?'],
   decision: ['I’m going in circles over a decision.', 'Which part is uncertain: what might happen, or what matters most to you?', 'Try separating the facts you have from the outcome you hope for. What would you need to learn before choosing?'],
