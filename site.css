@@ -35,3 +35,60 @@
 .legal-footer a:hover{text-decoration:underline}
 .legal-footer .privacy-link{padding:0;line-height:1.6;font-size:12px}
 @media(max-width:700px){.legal-footer{padding:26px 6%}}
+
+/* Refined minimal homepage */
+.minimal-home{--bg:#f5f2eb;--ink:#31282c;--muted:#766c70;--line:#dcd5ce;--wine:#542e40;background:var(--bg);color:var(--ink)}
+.minimal-home .header{position:relative;background:transparent;backdrop-filter:none;padding:38px 7%;border:0;max-width:1440px}
+.minimal-home .wordmark{font-size:14px;letter-spacing:.16em;color:var(--ink)}
+.minimal-home .wordmark span{font-size:8px;letter-spacing:.23em;margin-top:10px;color:var(--muted)}
+.minimal-home .home-main{max-width:1440px;padding:0 7%;margin:0 auto}
+.minimal-home .home-links{width:100%;max-width:none;margin:auto;padding:54px 0 58px}
+.minimal-home .home-link{display:grid;grid-template-columns:32px minmax(0,1fr) 48px;gap:22px;padding:32px 0;font-family:Georgia,'Times New Roman',serif;font-size:clamp(30px,4.2vw,60px);line-height:1.16;letter-spacing:-.045em;transition:color .2s,background .2s}
+.minimal-home .home-link:first-child{border-top:0}
+.minimal-home .home-link:last-child{border-bottom:0}
+.minimal-home .home-link .link-number{font:400 10px/1 var(--sans);letter-spacing:.06em;color:#86767c;align-self:center;max-width:none}
+.minimal-home .home-link .link-title{max-width:none;transition:transform .25s}
+.minimal-home .home-arrow{display:grid;place-items:center;width:46px;height:46px;border:1px solid #cfc2c7;border-radius:50%;font:400 23px/1 var(--sans);color:var(--wine);transition:background .25s,color .25s,transform .25s}
+.minimal-home .home-link:hover .link-title{transform:translateX(6px)}
+.minimal-home .home-link:hover .home-arrow{background:var(--wine);color:var(--bg);transform:rotate(45deg)}
+.minimal-home .business-contact{border-radius:3px;background:#382630;color:#f5f0e9;padding:27px 30px;gap:22px;margin:0 0 34px}
+.minimal-home .business-contact h2{color:#c9b9c1;font-size:11px;letter-spacing:.02em;max-width:190px;line-height:1.7}
+.minimal-home .business-links{font-size:12px;gap:28px}
+.minimal-home .business-links a{min-height:40px;display:inline-flex;align-items:center}
+.minimal-home .business-links span[aria-hidden]{color:#bea6b2}
+.minimal-home .legal-footer{max-width:1440px;width:86%;padding:24px 0 30px;border-top:1px solid var(--line);gap:24px;margin:0 auto}
+.minimal-home .legal-footer section{flex:1}
+.minimal-home .legal-footer h2{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:12px}
+.minimal-home .legal-footer address{display:flex;gap:50px;align-items:flex-start;font-size:11px;line-height:1.8;color:var(--muted)}
+.minimal-home .legal-footer address a{margin:0;padding:0}
+.minimal-home .legal-footer .privacy-link{font-size:11px;min-height:44px;display:inline-flex;align-items:flex-start;padding-top:28px}
+@media(min-width:901px){.minimal-home .business-contact{flex-direction:row;align-items:center}}
+@media(max-width:900px){.minimal-home .business-contact{gap:10px}.minimal-home .business-contact h2{max-width:none}}
+@media(max-width:600px){
+ .minimal-home .header{padding:28px 7%}
+ .minimal-home .wordmark{font-size:12px}
+ .minimal-home .home-links{padding:32px 0 38px}
+ .minimal-home .home-link{grid-template-columns:20px minmax(0,1fr) 36px;gap:12px;padding:28px 0;font-size:clamp(27px,7.2vw,40px);line-height:1.2}
+ .minimal-home .home-arrow{width:35px;height:35px;font-size:19px}
+ .minimal-home .home-link .link-number{font-size:9px}
+ .minimal-home .business-contact{padding:21px 20px;margin-bottom:26px}
+ .minimal-home .business-links{align-items:flex-start;flex-direction:column;gap:0;font-size:11px}
+ .minimal-home .legal-footer{padding:20px 0 26px}
+ .minimal-home .legal-footer address{flex-direction:column;gap:12px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){.minimal-home .home-link:hover .link-title,.minimal-home .home-link:hover .home-arrow{transform:none}}
+
+/* Original portraits and brand mark */
+.minimal-home .header{justify-content:flex-start;gap:18px}
+.brand-logo{display:block;flex-shrink:0;width:54px;line-height:0}
+.brand-logo img{display:block;width:100%;height:auto;border-radius:2px}
+.portrait-layout{display:grid;grid-template-columns:minmax(180px,.65fr) minmax(0,1.35fr);gap:6%;align-items:center;padding:30px 0 52px;width:100%}
+.personal-portrait{margin:0;overflow:hidden;aspect-ratio:3/4;background:#ddd4c6;border-radius:3px}
+.personal-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0%}
+.minimal-home .portrait-layout .home-links{padding:0}
+.minimal-home .portrait-layout .home-link{font-size:clamp(28px,3.3vw,48px);grid-template-columns:22px minmax(0,1fr) 40px;gap:16px;padding:30px 0}
+.minimal-home .portrait-layout .home-arrow{width:38px;height:38px;font-size:21px}
+.business-identity{display:flex;align-items:center;gap:18px}
+.business-identity img{width:64px;height:76px;object-fit:cover;object-position:50% 38%;border-radius:2px}
+@media(max-width:900px){.minimal-home .business-contact{flex-direction:row;flex-wrap:wrap}.business-identity{flex:1}.minimal-home .business-links{flex-wrap:wrap}}
+@media(max-width:600px){.brand-logo{width:43px}.minimal-home .header{gap:13px}.portrait-layout{grid-template-columns:1fr;gap:24px;padding:16px 0 34px}.personal-portrait{width:100%;aspect-ratio:5/4}.personal-portrait img{object-position:50% 5%}.minimal-home .portrait-layout .home-link{font-size:28px;padding:24px 0;gap:12px;grid-template-columns:20px minmax(0,1fr) 35px}.minimal-home .portrait-layout .home-arrow{width:34px;height:34px}.minimal-home .business-contact{gap:16px}.business-identity{flex-basis:100%}.business-identity img{width:52px;height:62px}.minimal-home .business-links{flex-direction:row;gap:0 20px}}
