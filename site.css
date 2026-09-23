@@ -158,7 +158,7 @@
 @media(max-width:380px){.minimal-home .portrait-layout .home-links{grid-template-columns:1fr}.action-card{aspect-ratio:1;min-height:0;padding:26px}.card-title{font-size:39px}.card-description{font-size:13px}}
 
 /* NEW experiment — matte paper and glossy calls to action. */
-.minimal-home{--bg:#fff4f7;--ink:#252129;--muted:#71636a;--wine:#d9557d;background-color:#fff9f6;background-image:radial-gradient(ellipse at 5% 5%,#ffe8ef99,transparent 58%),repeating-linear-gradient(17deg,#63405203 0px,#63405203 1px,transparent 1px,transparent 4px);color:var(--ink)}
+.minimal-home{--bg:#fff4f7;--ink:#252129;--muted:#71636a;--wine:#d9557d;background-color:#f8eee5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.10' filter='url(%23grain)'/%3E%3C/svg%3E"),radial-gradient(ellipse at 12% 8%,#fff6efaa,transparent 65%),repeating-linear-gradient(17deg,#96674e09 0px,#96674e09 1px,transparent 1px,transparent 4px);color:var(--ink)}
 .minimal-home .header{max-width:1120px}
 .minimal-home .home-main{max-width:1120px}
 .minimal-home .portrait-layout .home-links{grid-template-columns:1fr;gap:20px;max-width:none}
@@ -184,3 +184,19 @@
 @media(max-width:900px){.action-card{grid-template-columns:24px minmax(0,1fr);gap:12px 20px;padding:28px}.card-cta{grid-column:2;justify-self:start;margin-top:8px}.card-title{max-width:none}.card-description{max-width:40ch}}
 @media(max-width:600px){.minimal-home .portrait-layout .home-links{gap:16px}.action-card{aspect-ratio:auto;min-height:0;padding:24px;grid-template-columns:18px minmax(0,1fr);gap:12px}.card-title{font-size:29px}.card-description{font-size:12px}.card-cta{width:100%;min-width:0;padding:14px 16px;font-size:12px}.card-top{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.action-card:hover,.action-card:hover .card-cta{transform:none}}
+
+/* Match the first offer's light surface, with cool pastel variations. */
+.card-chatbot{background:linear-gradient(115deg,#faf5ef,#fffcf9 80%);border-color:#e4dad2;color:var(--ink)}
+.card-book{background:linear-gradient(115deg,#faf3f0,#fffcf9 80%);border-color:#e5d9d3;color:var(--ink)}
+.card-community{background:linear-gradient(115deg,#faf2f0,#fffcf9 80%);border-color:#e6d8d3;color:var(--ink)}
+.card-chatbot .card-top{color:#79666f}
+.card-chatbot .card-description{color:#71636a}
+
+/* Offer cards without numbering. */
+.action-card{grid-template-columns:minmax(0,1fr) auto}
+@media(max-width:900px){.action-card{grid-template-columns:minmax(0,1fr)}.card-cta{grid-column:1}}
+
+/* Gradually soften the glossy action colors down the page. */
+.card-chatbot .card-cta{background:linear-gradient(180deg,#f5bfd0 0%,#eb94af 47%,#e580a0 49%,#df7d9d 100%);border-color:#bd607f;box-shadow:inset 0 1px 0 #ffffffc9,inset 0 -2px 0 #b85e7a44,0 5px 12px #9451691e}
+.card-book .card-cta{background:linear-gradient(180deg,#e9becd 0%,#dc99af 47%,#d68aa4 49%,#cf869f 100%);border-color:#b17389;box-shadow:inset 0 1px 0 #ffffffb9,inset 0 -2px 0 #a36b8140,0 5px 12px #855c6c1a}
+.card-community .card-cta{background:linear-gradient(180deg,#ddbec9 0%,#cda0af 47%,#c695a7 49%,#c091a2 100%);border-color:#a5808e;box-shadow:inset 0 1px 0 #ffffffa9,inset 0 -2px 0 #9274843b,0 5px 12px #76636b17}
