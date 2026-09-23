@@ -92,3 +92,40 @@
 .business-identity img{width:64px;height:76px;object-fit:cover;object-position:50% 38%;border-radius:2px}
 @media(max-width:900px){.minimal-home .business-contact{flex-direction:row;flex-wrap:wrap}.business-identity{flex:1}.minimal-home .business-links{flex-wrap:wrap}}
 @media(max-width:600px){.brand-logo{width:43px}.minimal-home .header{gap:13px}.portrait-layout{grid-template-columns:1fr;gap:24px;padding:16px 0 34px}.personal-portrait{width:100%;aspect-ratio:5/4}.personal-portrait img{object-position:50% 5%}.minimal-home .portrait-layout .home-link{font-size:28px;padding:24px 0;gap:12px;grid-template-columns:20px minmax(0,1fr) 35px}.minimal-home .portrait-layout .home-arrow{width:34px;height:34px}.minimal-home .business-contact{gap:16px}.business-identity{flex-basis:100%}.business-identity img{width:52px;height:62px}.minimal-home .business-links{flex-direction:row;gap:0 20px}}
+
+/* Blush, white and ink — reference-inspired direction */
+.minimal-home{--bg:#faf8f7;--ink:#191919;--muted:#70696c;--line:#e7dcdf;--wine:#a44469;background:var(--bg)}
+.minimal-home .header{padding-top:28px;padding-bottom:28px}
+.brand-logo{width:64px}
+.brand-logo img{border-radius:7px}
+.minimal-home .wordmark{color:#171717;font-weight:500}
+.minimal-home .home-main{padding-top:12px}
+.portrait-layout{grid-template-columns:minmax(220px,.8fr) minmax(0,1.2fr);gap:6%;padding:0 0 42px}
+.personal-portrait{position:relative;aspect-ratio:4/5;overflow:visible;background:transparent;border-radius:0;display:flex;align-items:center;justify-content:center}
+.portrait-backdrop{position:absolute;inset:0 0 16%;background:#efdee2;border:1px solid #e6d5d9;border-radius:14px}
+.personal-portrait::after{content:'';position:absolute;left:10%;right:10%;bottom:5%;height:1px;background:#e6d5d9}
+.personal-portrait img{position:relative;width:88%;height:auto;aspect-ratio:1;border-radius:50%;border:7px solid #fff;object-fit:cover;object-position:50% 35%;margin-top:18%;box-shadow:0 8px 28px #3a1e2b08}
+.minimal-home .portrait-layout .home-link{font-family:var(--sans);font-weight:500;font-size:clamp(25px,2.8vw,43px);letter-spacing:-.045em;padding:30px 0}
+.minimal-home .home-link .link-number{color:#a37c8b}
+.minimal-home .home-arrow{border-color:#e0b8c7;background:#fff;color:#242024}
+.minimal-home .home-link:hover .home-arrow{background:#f0a8c4;color:#181818;border-color:#f0a8c4}
+.minimal-home .home-link:hover{color:#9a3d60}
+.minimal-home .business-contact{background:#211f20;border-radius:12px;padding:24px 28px;color:#fff;margin-bottom:30px}
+.minimal-home .business-contact h2{color:#efdce3}
+.business-identity img{width:64px;height:64px;border-radius:50%;border:3px solid #f8edf1;object-position:50% 35%}
+.minimal-home .business-links span[aria-hidden]{color:#f1a6c4}
+.minimal-home .business-links a:hover{color:#f4b4ce}
+.minimal-home .legal-footer{border-color:#e5dadd}
+@media(max-width:600px){.brand-logo{width:49px}.minimal-home .header{padding-top:22px;padding-bottom:22px}.portrait-layout{grid-template-columns:1fr;gap:8px;padding-bottom:28px}.personal-portrait{aspect-ratio:1.65;max-width:100%;width:100%;margin:0}.portrait-backdrop{inset:0 0 20%;border-radius:12px}.personal-portrait img{width:49%;margin-top:7%;border-width:5px}.personal-portrait::after{display:none}.minimal-home .portrait-layout .home-link{font-size:28px;padding:24px 0}.minimal-home .business-contact{padding:22px}.business-identity img{width:52px;height:52px}}
+
+.business-identity img{flex-shrink:0}
+@media(min-width:601px) and (max-width:900px){.minimal-home .business-contact{flex-direction:column;align-items:flex-start}.business-identity{flex:none}}
+
+.minimal-home .personal-portrait img{object-position:50% 8%}
+
+/* Restore rectangular photo framing. */
+.minimal-home .personal-portrait{display:block;aspect-ratio:3/4;background:#efdee2;overflow:hidden;border-radius:3px}
+.minimal-home .personal-portrait::after{display:none}
+.minimal-home .personal-portrait img{display:block;width:100%;height:100%;aspect-ratio:auto;margin:0;border:0;border-radius:0;box-shadow:none;object-fit:cover;object-position:50% 0%}
+.minimal-home .business-identity img{width:64px;height:76px;border:0;border-radius:2px;object-position:50% 38%}
+@media(max-width:600px){.minimal-home .personal-portrait{aspect-ratio:5/4}.minimal-home .personal-portrait img{object-position:50% 5%}.minimal-home .business-identity img{width:52px;height:62px}}
