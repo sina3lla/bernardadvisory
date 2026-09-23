@@ -129,3 +129,30 @@
 .minimal-home .personal-portrait img{display:block;width:100%;height:100%;aspect-ratio:auto;margin:0;border:0;border-radius:0;box-shadow:none;object-fit:cover;object-position:50% 0%}
 .minimal-home .business-identity img{width:64px;height:76px;border:0;border-radius:2px;object-position:50% 38%}
 @media(max-width:600px){.minimal-home .personal-portrait{aspect-ratio:5/4}.minimal-home .personal-portrait img{object-position:50% 5%}.minimal-home .business-identity img{width:52px;height:62px}}
+
+/* Community invitation; activated when the invite URL is supplied. */
+.minimal-home .community-link{width:100%;text-align:left;background:transparent;color:var(--ink);border:0;border-top:1px solid var(--line);border-radius:0}
+.minimal-home .community-link:disabled{cursor:default;opacity:1}
+.minimal-home .community-description{display:block;margin-top:12px;max-width:34ch;font:400 12px/1.7 var(--sans);letter-spacing:0;color:var(--muted)}
+.minimal-home .community-link:disabled:hover{color:var(--ink)}
+.minimal-home .community-link:disabled:hover .link-title{transform:none}
+.minimal-home .community-link:disabled:hover .home-arrow{transform:none;background:#fff;color:#242024;border-color:#e0b8c7}
+
+/* Four square, fully clickable offer cards. */
+.minimal-home .portrait-layout{display:block;padding:10px 0 38px}
+.minimal-home .portrait-layout .home-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;width:100%;padding:0;max-width:920px;margin:0 auto}
+.action-card{aspect-ratio:1;min-width:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,3.3vw,46px);border:1px solid #e7d4dc;border-radius:6px;transition:transform .2s,box-shadow .2s;background:#f1e1e6;color:#211c1f}
+.card-consulting{background:#f1a6c4;border-color:#f1a6c4}
+.card-chatbot{background:#242022;color:#fff;border-color:#242022}
+.card-book{background:#fff}
+.card-community{background:#eedee3}
+.card-top{display:flex;justify-content:space-between;align-items:center;font:400 11px/1 var(--sans);letter-spacing:.08em}
+.card-arrow{font-size:32px;line-height:1;letter-spacing:0}
+.card-copy{display:block;padding-top:30px}
+.card-title{display:block;font:600 clamp(30px,4.1vw,55px)/1.04 var(--sans);letter-spacing:-.055em;max-width:10ch}
+.card-description{display:block;font:400 clamp(12px,1.25vw,15px)/1.6 var(--sans);letter-spacing:0;max-width:29ch;margin-top:18px;color:#56444e}
+.card-chatbot .card-description{color:#e3d4db}
+.action-card:hover{transform:translateY(-4px);box-shadow:0 12px 24px #35202c12}
+.action-card:focus-visible{outline:3px solid #9a3d60;outline-offset:5px}
+@media(max-width:600px){.minimal-home .portrait-layout .home-links{gap:12px}.action-card{padding:20px;aspect-ratio:auto;min-height:240px}.card-title{font-size:clamp(23px,5.6vw,32px)}.card-description{font-size:11px;margin-top:12px}.card-arrow{font-size:24px}.card-copy{padding-top:24px}}
+@media(max-width:380px){.minimal-home .portrait-layout .home-links{grid-template-columns:1fr}.action-card{aspect-ratio:1;min-height:0;padding:26px}.card-title{font-size:39px}.card-description{font-size:13px}}
